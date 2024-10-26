@@ -8,7 +8,7 @@ df_schedule = pd.read_csv('static/schedule.csv')
 
 st.header('SCHEDULE')
 
-st.dataframe(df_concessions,
+st.dataframe(df_schedule,
 				height = 750,
 				width = 800,
 				hide_index=True)
