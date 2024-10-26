@@ -5,4 +5,4 @@ st.header("STANDINGS")
 
 df_standings = pd.read_csv('static/schedule.csv')
 
-st.Dataframe(df_standings)
+st.dataframe(df_standings)
