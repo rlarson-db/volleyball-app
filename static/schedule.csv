@@ -1,5 +1,10 @@
-Location,Court,Time,Team1,Team2,Result,WinningTeam
-GHS,1,8:00,Greely,Yarmouth
-GHS,2,8:00,Washington,Windham
-GMS,1,8:00,Falmouth,Westbrook
-GMS,2,8:00,Cape Elizabeth,Messalonskee
+Pool,Location,Court,Time,Team1,Team2,Result,WinningTeam
+A,GHS,1,8:00,Greely,Yarmouth
+A,GHS,2,8:00,Washington,Windham
+B,GMS,1,8:00,Falmouth,Westbrook
+B,GMS,2,8:00,Cape Elizabeth,Messalonskee
+
+A,GHS,1,10:00,Yarmouth,Washington
+A,GHS,2,10:00,Greely,Windham
+B,GMS,1,10:00,Westbrook,Cape Elizabeth
+B,GMS,2,10:00,Falmouth,Messalonskee

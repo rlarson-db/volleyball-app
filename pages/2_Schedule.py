@@ -9,15 +9,26 @@ st.set_page_config(
    initial_sidebar_state="expanded",
 )
 
+# read csv
 df_schedule = pd.read_csv('static/schedule.csv')
 
+#create list of teams for sidebar selection
+df_teamnames = df_schedule['Team1'].append(df_schedule['Team2'])
+l_teams = sorted(df_teamnames.unique())
+st.sidebar.header('Select team:')
+selected_team = st.sidebar.selectbox('Teams', l_teams)
+
+# post information
 st.header('SCHEDULE')
 
-st.dataframe(df_schedule,
-				height = 750,
+df_filteredschedule = df_schedule[(df_schedule['Team1'] == selected_team) | (df_schedule['Team2'] == selected_team)] 
+
+st.dataframe(df_filteredschedule,
+				#height = 750,
 				width = 800,
 				hide_index=True)
 
+# this should be removed
 st.header('PLAYOFF BRACKET')
 
 components.html(
