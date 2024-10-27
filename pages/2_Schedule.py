@@ -15,7 +15,9 @@ df_schedule = pd.read_csv('static/schedule.csv')
 #create list of teams for sidebar selection
 l_teams = df_schedule['Team1'].unique().tolist()
 l_teams.append(df_schedule['Team2'].unique().tolist())
-#l_teams.sort()
+l_teams = l_teams.unique()
+l_teams.sort()
+
 st.sidebar.header('Select team:')
 selected_team = st.sidebar.selectbox('Teams', l_teams)
 
