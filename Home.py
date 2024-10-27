@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Volleyball Play Day - Home",
-    page_icon=571,
+    page_icon='571',
     layout="wide",
     initial_sidebar_state="expanded",
     )
