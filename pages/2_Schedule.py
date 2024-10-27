@@ -2,7 +2,12 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 
-st.set_page_config(page_title="Schedule", page_icon=":calendar:", layout="wide")
+st.set_page_config(
+   page_title="Schedule",
+   page_icon=":calendar:",
+   layout="wide",
+   initial_sidebar_state="expanded",
+)
 
 df_schedule = pd.read_csv('static/schedule.csv')
 

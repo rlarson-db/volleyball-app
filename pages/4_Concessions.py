@@ -6,7 +6,7 @@ st.set_page_config(page_title="Concessions", page_icon=':pizza:', layout="wide")
 
 df_concessions = pd.read_csv('static/concessions.csv')
 
-st.header('This is the menu')
+st.header('Available Concessions Options')
 
 st.dataframe(df_concessions,
 				height = 750,
