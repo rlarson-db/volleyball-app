@@ -13,8 +13,9 @@ st.set_page_config(
 df_schedule = pd.read_csv('static/schedule.csv')
 
 #create list of teams for sidebar selection
-df_teamnames = df_schedule['Team1'].append(df_schedule['Team2'])
-l_teams = sorted(df_teamnames.unique())
+l_teams = df_schedule['Team1'].unique().tolist()
+l_teams.append(df_schedule['Team2'].unique().tolist())
+l_teams.sort()
 st.sidebar.header('Select team:')
 selected_team = st.sidebar.selectbox('Teams', l_teams)
 
