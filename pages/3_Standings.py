@@ -51,6 +51,8 @@ for idx,row in df_schedule.iterrows():
 
 df_standings = pd.DataFrame({'Wins':pd.Series(wins),'Losses':pd.Series(losses)})
 
+df_standings['Games'] = 0
+
 df_standings['Games'] = df_standings['Wins'] + df_standings['Losses']
 
 df_standings['Win Pct'] = df_standings['Wins'] / df_standings['Games']
