@@ -32,16 +32,27 @@ for team in l_teams:
     wins[team] = 0
     losses[team] = 0
 
-st.write(wins)
+#st.write(wins)
 
 # count them off
 
-#for idx,row in df_full_schedule.iterrows():
-#    winner = row['WinningTeam']
-#    loser = row['LT']
-#    wins[winner] +=1
-#    losses[loser] +=1
+df_schedule = df_schedule[df_schedule['WinningTeam'].notna()]
+
+for idx,row in df_schedule.iterrows():
+    winner = row['WinningTeam']
+    loser = row['LosingTeam']
+    wins[winner] +=1
+    losses[loser] +=1
 
 # put them into a dataframe
 
-st.dataframe(df_schedule,hide_index=True)
+#st.write(wins)
+#st.write(losses)
+
+df_standings = pd.DataFrame({'Wins':pd.Series(wins),'Losses':pd.Series(losses)})
+
+df_standings['Games'] = df_standings['Wins'] + df_standings['Losses']
+
+df_standings['Win Pct'] = df_standings['Wins'] / df_standings['Games']
+
+st.dataframe(df_standings)
