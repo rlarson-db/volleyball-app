@@ -6,7 +6,7 @@ st.set_page_config(
    page_title="Maps",
    page_icon='350',
    layout="wide",
-   initial_sidebar_state="expanded",
+   #initial_sidebar_state="expanded",
 )
 
 df_locations = pd.read_csv('static/locations.csv')

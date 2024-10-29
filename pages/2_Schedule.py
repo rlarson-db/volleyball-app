@@ -6,7 +6,7 @@ st.set_page_config(
    page_title="Schedule",
    page_icon=":calendar:",
    layout="wide",
-   initial_sidebar_state="expanded",
+   #initial_sidebar_state="expanded",
 )
 
 # read csv
