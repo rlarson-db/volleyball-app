@@ -4,7 +4,11 @@ import pandas as pd
 
 st.set_page_config(
    page_title="Maps",
+<<<<<<< HEAD
    page_icon=':earth_americas:',
+=======
+   page_icon=":earth_americas:",
+>>>>>>> 245c27c (emojis)
    layout="wide",
    #initial_sidebar_state="expanded",
 )
