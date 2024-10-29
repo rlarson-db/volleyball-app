@@ -8,6 +8,6 @@ st.set_page_config(
     )
 
 
-st.write("# Welcome to Volleyball Play Day!!!!")
+st.write("# Welcome to Volleyball Play Day!!!")
 
 st.sidebar.success("Select a page above.")

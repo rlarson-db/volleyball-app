@@ -3,4 +3,4 @@ enableStaticServing = true
 
 [theme]
 base="dark"
-primaryColor="#459a37"
+primaryColor="#008c00"

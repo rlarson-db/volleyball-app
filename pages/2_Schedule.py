@@ -23,14 +23,28 @@ for t in l_teams3:
         l_teams.append(t)
 
 l_teams.sort()
+l_teams[0] = 'All'
 
-st.sidebar.header('Select team:')
-selected_team = st.sidebar.selectbox('Teams', l_teams)
+#st.sidebar.header('Select team:')
+#selected_team = st.sidebar.selectbox('Teams', l_teams)
+
+with st.sidebar.form("Options"):
+    st.write("Inside the form")
+    selected_team = st.selectbox('Teams', l_teams)
+    played_val = st.checkbox("Only Unplayed Games?")
+
+    # Every form must have a submit button.
+    submitted = st.form_submit_button("Submit")
+    #if submitted:
+        #st.write("Team", selected_team, "Unplayed Games Only?", played_val)
 
 # post information
 st.header('SCHEDULE')
 
-df_filteredschedule = df_schedule[(df_schedule['Team1'] == selected_team) | (df_schedule['Team2'] == selected_team)] 
+if selected_team != 'All':
+    df_filteredschedule = df_schedule[(df_schedule['Team1'] == selected_team) | (df_schedule['Team2'] == selected_team)]
+else:
+    df_filteredschedule = df_schedule
 
 st.dataframe(df_filteredschedule,
 				#height = 750,
