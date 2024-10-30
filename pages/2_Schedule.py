@@ -2,12 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 
-st.set_page_config(
-   page_title="Schedule",
-   page_icon=":calendar:",
-   layout="wide",
-   #initial_sidebar_state="expanded",
-)
+st.set_page_config(page_title="Schedule",page_icon=":calendar:")
 
 # read csv
 df_schedule = pd.read_csv('static/schedule.csv')
@@ -23,20 +18,25 @@ for t in l_teams3:
         l_teams.append(t)
 
 l_teams.sort()
-l_teams[0] = 'All'
+l_teams.insert(0,'All')
 
-#st.sidebar.header('Select team:')
-#selected_team = st.sidebar.selectbox('Teams', l_teams)
+l_pools = df_schedule['Pool'].unique().tolist()
+l_pools.sort()
+l_pools.insert(0,'All')
+
+l_locations = df_schedule['Location'].unique().tolist()
+l_locations.sort()
+l_locations.insert(0,'All')
 
 with st.sidebar.form("Options"):
-    st.write("Inside the form")
+    st.write("Filtering Options:")
     selected_team = st.selectbox('Teams', l_teams)
+    selected_pool = st.selectbox('Pools', l_pools)
+    selected_location = st.selectbox('Location', l_locations)
     played_val = st.checkbox("Only Unplayed Games?")
 
     # Every form must have a submit button.
-    submitted = st.form_submit_button("Submit")
-    #if submitted:
-        #st.write("Team", selected_team, "Unplayed Games Only?", played_val)
+    submitted = st.form_submit_button("Filter Schedule")
 
 # post information
 st.header('SCHEDULE')
@@ -46,14 +46,14 @@ if selected_team != 'All':
 else:
     df_filteredschedule = df_schedule
 
-st.dataframe(df_filteredschedule,
-				#height = 750,
-				width = 800,
-				hide_index=True)
+if selected_pool != 'All':
+    df_filteredschedule = df_schedule[(df_schedule['Pool'] == selected_pool)]
+else:
+    df_filteredschedule = df_schedule
 
-# this should be removed
-#st.header('PLAYOFF BRACKET')
+if selected_location != 'All':
+    df_filteredschedule = df_schedule[(df_schedule['Location'] == selected_location)]
+else:
+    df_filteredschedule = df_schedule
 
-#components.html(
-#	"""<a class="maxpreps-widget-link" data-width="900" data-height="600" data-type="tournament" data-member-id="8928daf0-8ed7-452c-8944-54ab7d6e74fa" data-allow-scrollbar="true" href="https://www.maxpreps.com/tournament/view.aspx?tournamentid=97b60314-f69d-41ed-8145-e2243ace6d6b&ssid=41b23fe4-20c2-4913-877a-6e6a64958433&bracketid=aacb117d-bf3a-4ec1-ab44-83880292a4eb" >2024 MPA Volleyball Championships Class B</a><script type="text/javascript" >(function(d){var mp = d.createElement('script'),h=d.getElementsByTagName('head')[0];mp.type='text/javascript';mp.async=true;mp.src='https://www.maxpreps.com/includes/js/widget/widget.compressed.js';h.appendChild(mp);})(document);</script>"""
-#	,height=900)
+st.dataframe(df_filteredschedule,width=800,hide_index=True)

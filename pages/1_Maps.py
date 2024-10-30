@@ -5,7 +5,7 @@ import pandas as pd
 st.set_page_config(
    page_title="Maps",
    page_icon=':earth_americas:',
-   layout="wide",
+   #layout="wide",
    #initial_sidebar_state="expanded",
 )
 
@@ -16,10 +16,10 @@ with st.expander('High and Middle Schools Overview Map', expanded=False):
 				)
 
 with st.expander('Specific Map Links', expanded=True):
-    #st.write('Test')	
+	
 	st.dataframe(
 					df_locations,
-					height = 200,
+					#height = 200,
 					width = 800,
 					hide_index=True,
 					column_config=	{

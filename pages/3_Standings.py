@@ -1,12 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(
-   page_title="Standings",
-   page_icon=":clipboard:",
-   layout="wide",
-   #initial_sidebar_state="expanded",
-)
+st.set_page_config(page_title="Standings",page_icon=":clipboard:")
 
 st.header("CURRENT STANDINGS")
 
@@ -32,8 +27,6 @@ for team in l_teams:
     wins[team] = 0
     losses[team] = 0
 
-#st.write(wins)
-
 # count them off
 
 df_schedule = df_schedule[df_schedule['WinningTeam'].notna()]
@@ -45,9 +38,6 @@ for idx,row in df_schedule.iterrows():
     losses[loser] +=1
 
 # put them into a dataframe
-
-#st.write(wins)
-#st.write(losses)
 
 df_standings = pd.DataFrame({'Wins':pd.Series(wins),'Losses':pd.Series(losses)})
 
