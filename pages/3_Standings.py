@@ -47,4 +47,13 @@ df_standings['Games'] = df_standings['Wins'] + df_standings['Losses']
 
 df_standings['Win Pct'] = df_standings['Wins'] / df_standings['Games']
 
-st.dataframe(df_standings)
+df_standings = df_standings.sort_values(by=['Win Pct'], ascending=False)
+
+st.dataframe(df_standings,column_config={
+        "Win Pct": st.column_config.NumberColumn(
+            "Winning Percentage",
+            help="Winning Percentage",
+            width='large',
+            format="%.2f%%",
+        )
+    },)
