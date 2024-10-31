@@ -53,7 +53,7 @@ st.dataframe(df_standings,column_config={
         "Win Pct": st.column_config.NumberColumn(
             "Winning Percentage",
             help="Winning Percentage",
-            width='large',
+            width='medium',
             format="%.2f%%",
         )
     },)

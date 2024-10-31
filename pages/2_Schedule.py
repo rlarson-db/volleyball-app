@@ -34,12 +34,14 @@ with st.sidebar.form("Options"):
     selected_pool = st.selectbox('Pools', l_pools)
     selected_location = st.selectbox('Location', l_locations)
     played_val = st.checkbox("Only Unplayed Games?")
+    game_scores = st.checkbox("Show Individual Game Scores?")
 
     # Every form must have a submit button.
     submitted = st.form_submit_button("Filter Schedule")
 
 # post information
 st.header('SCHEDULE')
+st.write(f'Team: {selected_team}   |   Pool: {selected_pool}   |   Location: {selected_location}   |   Unplayed Only: {played_val}')
 
 if selected_team != 'All':
     df_filteredschedule = df_schedule[(df_schedule['Team1'] == selected_team) | (df_schedule['Team2'] == selected_team)]
@@ -47,13 +49,41 @@ else:
     df_filteredschedule = df_schedule
 
 if selected_pool != 'All':
-    df_filteredschedule = df_schedule[(df_schedule['Pool'] == selected_pool)]
-else:
-    df_filteredschedule = df_schedule
+    df_filteredschedule = df_filteredschedule[(df_filteredschedule['Pool'] == selected_pool)]
+
+if selected_pool != 'All':
+    df_filteredschedule = df_filteredschedule[(df_filteredschedule['Pool'] == selected_pool)]
 
 if selected_location != 'All':
-    df_filteredschedule = df_schedule[(df_schedule['Location'] == selected_location)]
-else:
-    df_filteredschedule = df_schedule
+    df_filteredschedule = df_filteredschedule[(df_filteredschedule['Location'] == selected_location)]
 
-st.dataframe(df_filteredschedule,width=800,hide_index=True)
+if played_val:
+    df_filteredschedule = df_filteredschedule[df_schedule['T1G1'] == 0]
+
+if game_scores:
+    columns_to_show = ['Pool','Location','Court','Time','Team1','T1G1','T1G2','T1G3','Team2','T2G1','T2G2','T2G3']
+else:
+    columns_to_show = ['Pool','Location','Court','Time','Team1','Team2']
+
+st.dataframe(df_filteredschedule,
+             column_order=columns_to_show,
+             column_config={
+                            "Pool": st.column_config.TextColumn(
+                                                                "P",
+                                                                help="Pool",
+                                                                width=None,
+                                                                ),
+                            "Location": st.column_config.TextColumn(
+                                                                "L",
+                                                                help="Location",
+                                                                width=None
+                                                                ),
+                            "Court": st.column_config.TextColumn(
+                                                                "C",
+                                                                help="Court Number",
+                                                                width=None
+                                                                ),                                                             
+                            },
+                #width=800,
+                hide_index=True
+            )

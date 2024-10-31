@@ -1,10 +1,10 @@
-Pool,Location,Court,Time,Team1,Team2,Team1Score,Team2Score,WinningTeam,LosingTeam
-A,GHS,1,8:00,Greely,Yarmouth,3,0,Greely,Yarmouth
-A,GHS,2,8:00,Washington,Windham,3,0,Washington,Windham
-B,GMS,1,8:00,Falmouth,Westbrook
-B,GMS,2,8:00,Cape Elizabeth,Messalonskee
+Pool,Location,Court,Time,Team1,T1G1,T1G2,T1G3,Team2,T2G1,T2G2,T2G3
+A,GHS,1,8:00,Greely,25,25,18,Yarmouth,10,11,13
+A,GHS,2,8:00,Washington,0,0,0,Windham,0,0,0
+B,GMS,1,8:00,Falmouth,0,0,0,Westbrook,0,0,0
+B,GMS,2,8:00,Cape Elizabeth,0,0,0,Messalonskee,0,0,0
 
-A,GHS,1,10:00,Yarmouth,Washington
-A,GHS,2,10:00,Greely,Windham,0,3,Windham,Greely
-B,GMS,1,10:00,Westbrook,Cape Elizabeth
-B,GMS,2,10:00,Falmouth,Messalonskee
+A,GHS,1,10:00,Yarmouth,0,0,0,Washington,0,0,0
+A,GHS,2,10:00,Greely,0,0,0,Windham,0,0,0
+B,GMS,1,10:00,Westbrook,0,0,0,Cape Elizabeth,0,0,0
+B,GMS,2,10:00,Falmouth,0,0,0,Messalonskee,0,0,0
