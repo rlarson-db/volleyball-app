@@ -39,6 +39,18 @@ with st.sidebar.form("Options"):
     # Every form must have a submit button.
     submitted = st.form_submit_button("Filter Schedule")
 
+""" selected_team = st.segmented_control(
+    "Team", l_teams, selection_mode="multi"
+)
+
+selected_pool = st.segmented_control(
+    "Pool", l_pools, selection_mode="multi"
+)
+
+selected_location = st.segmented_control(
+    "Location", l_locations, selection_mode="multi"
+) """
+
 # post information
 st.header('SCHEDULE')
 st.write(f'Team: {selected_team}   |   Pool: {selected_pool}   |   Location: {selected_location}   |   Unplayed Only: {played_val}')
